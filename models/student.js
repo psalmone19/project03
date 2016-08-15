@@ -12,6 +12,7 @@ var studentSchema = new mongoose.Schema({
   email: String,
   cohort: Number,
   facts: [factSchema],
+  googleId: String,
   created: { type: Date, default: Date.now }
 });
 
