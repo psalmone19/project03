@@ -3,14 +3,6 @@ var filteredStudents = [];
 var searchName = '';
 var template;
 
-// socket by Egan & Antonio
-document.addEventListener("DOMContentLoaded", function() {
-
-   // get our connection to the socket.io server
-   var socket = io();
-   console.log(socket);
-
-});
 
 $(function() {
   // load all students one time at load
@@ -51,3 +43,13 @@ $('#search').on('keypress blur', function(evt) {
 });
 
 $('[type="radio"]').on('change', function() { render(); });
+
+// socket by Egan & Antonio
+document.addEventListener("DOMContentLoaded", function() {
+
+   // get our connection to the socket.io server
+   var socket = io();
+   console.log(socket);
+
+});
+
