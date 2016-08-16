@@ -13,6 +13,7 @@
     "ejs": "^2.4.1",
     "express": "^4.13.4",
     "express-session": "^1.14.0",
+    "moment": "^2.14.1",
     "mongoose": "^4.4.6",
     "morgan": "^1.7.0",
     "node-sass-middleware": "^0.9.7",
