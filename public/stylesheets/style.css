@@ -1,8 +1,23 @@
-.brand-logo {
-  margin-left: 15px; }
+#chatbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 5px; }
 
-.student .card-title {
-  display: inline-block;
-  position: relative;
-  vertical-align: middle;
-  margin-top: -18px; }
+#m {
+  width: 70%;
+  display: inline-block; }
+
+#chatsend {
+  margin-bottom: 3px; }
+
+#upMsg {
+  display: block; }
+
+#draw {
+  width: 100%;
+  height: 100%; }
+
+@media screen and (max-width: 650px) {
+  #draw {
+    height: 700px; } }

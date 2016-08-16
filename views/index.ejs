@@ -8,8 +8,12 @@
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css"> -->
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cyborg/bootstrap.min.css" rel="stylesheet" integrity="sha384-D9XILkoivXN+bcvB2kSOowkIvIcBbNdoDQvfBNsxYAIieZbx8/SI4NeUvrRGCpDi" crossorigin="anonymous">
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cyborg/bootstrap.min.css" rel="stylesheet" integrity="sha384-D9XILkoivXN+bcvB2kSOowkIvIcBbNdoDQvfBNsxYAIieZbx8/SI4NeUvrRGCpDi" crossorigin="anonymous"> -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
   <link rel="stylesheet" href="stylesheets/style.css"/>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="javascripts/app.js"></script>
+  <script src="/javascripts/paper.js"></script>
 </head>
 <body>
   <div class="navbar">
@@ -40,69 +44,18 @@
     </div>
   </div>
 </nav>
-      <!-- <div class="nav-wrapper">
-        <a href="" class="brand-logo left">DRAWING.IO</a> -->
-<!-- new html below -->
-        <!-- <ul class="right">
-          <$ if (user) { $>
-          <li><a href="/logout"><i class="material-icons left">trending_flat</i>Logout</a></li>
-          <$ } else { $>
-          <li><a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a></li>
-          <$ } $>
-        </ul>
-      </div>
-    </nav> -->
+
   </div>
-  <!-- <div class="row">
-    <div class="col s4"> -->
-      <!-- search -->
-      <!-- <div class="input-field">
-        <input id="search" type="search" placeholder="search name">
-        <i class="material-icons">close</i>
-      </div>
-    </div>
-    <div class="col s8">
-      <form action="" class="input-field right">
-        <input name="sort" type="radio" id="sortCohort" class="with-gap" checked>
-        <label for="sortCohort">Sort by Cohort</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input name="sort" type="radio" id="sortName" class="with-gap">
-        <label for="sortName">Sort by Name</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      </form>
-    </div> -->
-  <!-- </div> -->
 
-  <!-- <div class="row"> -->
-    <!-- students will be rendered within the #students div -->
-    <!-- <div id="students" class="col s12"></div>
-  </div> -->
+  <div id="chatbar">
+    <h5 id="messages"></h5>
+     <form action="">
+       <input type="text" id="m" autocomplete="off" class="form-control" placeholder="Text input"><button class="btn btn-success" id="chatsend">Send</button>
+     </form>
+  </div>
 
-  <!-- underscore template / note: ejs was configured to use different tags in server.js -->
-  <!-- <script type="text/template" id="studentTemplate">
-    <h2 class="blue-grey-text text-darken-2">Students</h2>
-    <% students.forEach(function(student) { %>
-      <div class="card blue-grey student">
-        <div class="card-content white-text">
-          <div>
-          <i class="small material-icons">perm_identity</i>
-          <span class="card-title"><%= student.name %></span>
-          <% if (student.cohort) { %><span class="badge white">WDI <%= student.cohort %></span><% } %>
-          </div>
-          <ul class="collection">
-            <% student.facts.forEach(function(fact) { %>
-              <li class="collection-item blue-grey-text text-darken-2"><%= fact.text %></li>
-            <% }) %>
-            <% if (student._id === userId) { %>
-              <div class="card-action">
-                <input type="text" id="fact" class="white-text">
-                <input type="button" class="btn white-text"
-                    onclick="addFact()" value="Add Fact">
-              </div>
-            <% } %>
-          </ul>
-        </div>
-      </div>
-    <% }) %>
-  </script> -->
+
+  <canvas id="draw" resize="true" keepalive="true"></canvas>
 
   <script>
   var userId = '';
@@ -119,10 +72,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 
   <!-- special route created by socket.io on the server -->
-  <script src="/socket.io/socket.io.js"></script>
-
-  <script src="javascripts/app.js"></script>
-
-
+  <!-- <script src="/javascripts/io.js"></script> -->
+  <script type="text/paperscript" src="/javascripts/draw.js" canvas="draw"></script>
 </body>
 </html>
