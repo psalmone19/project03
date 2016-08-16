@@ -1,8 +1,32 @@
+#chatbox-canvas-container {
+  max-width: 100vw;
+  max-height: 100vh;
+  text-align: center;
+}
+
+#chatbox-container {
+  width: 25vw;
+  height: 100vh;
+  background-color: yellow;
+  display: inline-block;
+}
+
+#draw-container {
+  width: 75vw;
+  height: 100vh;
+  display: inline-block;
+  float: left;
+}
+
 #chatbar {
   position: fixed;
   bottom: 0;
   width: 100%;
-  padding: 5px; }
+  padding: 5px;
+  display: flex;
+  justify-content: right;
+}
+
 
 #m {
   width: 70%;
@@ -14,9 +38,14 @@
 #upMsg {
   display: block; }
 
+
 #draw {
   width: 100%;
   height: 100%; }
+
+.navbar {
+  margin-bottom: 0;
+}
 
 @media screen and (max-width: 650px) {
   #draw {
