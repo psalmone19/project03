@@ -4,7 +4,7 @@
 <head>
     <title>DRAWING.IO</title>
     <!-- Google Icon Fonts used by Materialize -->
-    <link rel="icon" type="image/png" href="http://i.imgur.com/yyaH4ZF.jpg">
+    <link rel="icon" type="image/png" href="http://simpleicon.com/wp-content/uploads/pencil.png">
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Materialize CSS Framework -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css"> -->
@@ -47,26 +47,44 @@
             </ul>
           </div>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
+  </div>
+  
+<div class="modal fade" id="nicknamePOP">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">DRAWING.IO</h4>
+            </div>
+            <div class="modal-body">
+                <input type="name" class="form-control"  id="nickName" placeholder="Please enter Nickname!"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" id="submitName">Continue</button>
+            </div>
+        </div>
+    </div>    
+</div>
 
-    <div id="chatbox-canvas-container">
-      <div id="draw-container">
+<div id="chatbox-canvas-container">
+    <div id="draw-container">
         <button id="clearbutton">clear</button>
         <canvas id="draw" resize="true" keepalive="true"></canvas>
-      </div>
-
-      <div id="chatbox-container">
-        <div id="chatbar">
-          <h5 id="messages"></h5>
-          <form action="">
-            <input type="text" id="m" autocomplete="off" class="form-control" placeholder="Text input">
-            <button class="btn btn-success" id="chatsend">Send</button>
-          </form>
-        </div>
-      </div>
     </div>
-  </div>
+    <div id="chatbox-container">
+      <div id="chatbar">
+        <h5 id="messages"></h5>
+        <form action="">
+          <input type="text" id="m" autocomplete="off" class="form-control" placeholder="Text input">
+          <button class="btn btn-success" id="chatsend">Send</button>
+        </form>
+      </nav>
+    </div>
 
   <script>
     var userId = '';
