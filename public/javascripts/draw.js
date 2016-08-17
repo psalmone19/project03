@@ -189,7 +189,6 @@ socket.on('endPath', function (data, sessionId) {
     }
     view.draw();
 })
-
 //add user to array
 
 $('#submitName').click(function () {
