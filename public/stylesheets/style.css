@@ -51,7 +51,6 @@
 #upMsg {
   display: block; }
 
-
 /*Media Queries for Responsive Design*/
 @media screen and (min-width: 993px) and (max-width: 1400px) {
   #chatsend {
@@ -87,17 +86,11 @@
     line-height: 1;
     margin-left: 0px;
     text-align: center; }
-
   #chatbox-canvas-container {
-    height: 93vh;
-  }
+    height: 93vh; }
   #chatbox-container {
-    height: 100%;
-  }
+    height: 100%; }
   #draw-container {
-    height: 100%;
-  }
+    height: 100%; }
   #draw {
-    height: 89vh;
-  }
-}
+    height: 89vh; } }
