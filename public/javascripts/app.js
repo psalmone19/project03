@@ -15,5 +15,4 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(momentTimestamp)
         $('#messages').append($('<i class="fa fa-commenting-o" aria-hidden="true" id="upMsg">').text(' '+ msg +' '+ momentTimestamp.local().format('h:mm a')));
     })
-
 });
