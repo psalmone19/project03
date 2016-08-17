@@ -1,3 +1,4 @@
+/*Main div that contains navbar, chatbox, and canvas*/
 #main-container {
   max-width: 100%;
   max-height: 100%;
@@ -50,44 +51,53 @@
 #upMsg {
   display: block; }
 
-@media screen and (min-width: 1000px) and (max-width: 1400px) {
-  #chatsend {
-    margin-left: 20px;
-    margin-right: 10px;
-  }
-}
 
-
-@media screen and (min-width: 769px) and (max-width: 999px) {
+/*Media Queries for Responsive Design*/
+@media screen and (min-width: 993px) and (max-width: 1400px) {
   #chatsend {
-    padding: 4px;
+    margin-left: 15px;
+    margin-right: 10px; } }
+
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  #chatsend {
+    padding: 8px;
     font-size: 90%;
     line-height: 1.2;
-    margin: 10px;
-    /*text-align: center;*/
-  }
-}
+    margin-left: 10px;
+    text-align: center; } }
 
 @media screen and (max-width: 768px) {
   #chatsend {
-    padding: 2px 4px;
-    font-size: 80%;
+    padding: 8px 4px;
+    font-size: 90%;
     line-height: 1;
-    text-align: center;  }
-}
+    margin-left: 7px;
+    text-align: center; } }
 
 @media screen and (max-width: 650px) {
   #draw {
     height: 700px; }
   #m {
-    float: none;
-  }
+    float: none; }
   #chatsend {
-    padding: 4px 1px;
+    padding: 5px 6px;
+    height: 30px;
+    width: 50px;
     font-size: 80%;
     line-height: 1;
-    text-align: center;
+    margin-left: 0px;
+    text-align: center; }
+
+  #chatbox-canvas-container {
+    height: 93vh;
+  }
+  #chatbox-container {
+    height: 100%;
+  }
+  #draw-container {
+    height: 100%;
+  }
+  #draw {
+    height: 89vh;
   }
 }
-
-
