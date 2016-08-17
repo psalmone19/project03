@@ -1,45 +1,56 @@
 .navbar {
-  margin-bottom: 0; }
+    margin-bottom: 0;
+}
 
 #chatbox-canvas-container {
-  max-width: 100vw;
-  max-height: 100vh;
-  display: flex;
-  flex-direction: row; }
+    max-width: 100vw;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
 
 #chatbox-container {
-  flex: 3;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  height: 100vh;
-  background-color: #eee; }
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100vh;
+    background-color: #eee;
+}
 
 #draw-container {
-  flex: 7;
-  height: 100vh; }
+    flex: 7;
+    height: 100vh;
+}
 
 #chatbar {
-  padding-left: 1em; }
+    padding-left: 1em;
+}
 
 #m {
-  margin-top: 3px;
-  width: 70%;
-  float: left; }
+    margin-top: 3px;
+    width: 70%;
+    float: left;
+}
 
 #chatsend {
-  margin-top: 3px;
-  margin-bottom: 1em;
-  margin-left: 2em;
-  width: 20%; }
+    margin-top: 3px;
+    margin-bottom: 1em;
+    margin-left: 2em;
+    width: 20%;
+}
 
 #upMsg {
-  display: block; }
+    display: block;
+}
 
 #draw {
-  width: 100%;
-  height: 96%; }
+    width: 100%;
+    height: 96%;
+}
 
 @media screen and (max-width: 650px) {
-  #draw {
-    height: 700px; } }
+    #draw {
+        height: 700px;
+    }
+}

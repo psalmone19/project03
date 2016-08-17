@@ -7,9 +7,9 @@ var moment = require('moment');
 
 io.on('connection', function (socket) {
     console.log("user connected")
-    socket.on('chat message', function (msg) {
-        msg.timestamp = moment().valueOf()
-        io.emit('chat message', msg);
+    socket.on('chat message', function (userData) {
+        
+        io.emit('chat message', userData);
     });
     // A User starts a path
     socket.on('startPath', function (data, sessionId) {
@@ -31,10 +31,9 @@ io.on('connection', function (socket) {
         io.emit('clear-canvas');
     });
 
-    // socket.emit('chatmessage', {
-    //        timestamp: moment().valueOf()
-    //    });
-
+    socket.on('enteredRoom', function(msg){
+        io.emit('enteredRoom', msg);
+    })
 });
 
 
