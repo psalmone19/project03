@@ -6,7 +6,8 @@
   flex-direction: column; }
 
 .navbar {
-  margin-bottom: 0; }
+    margin-bottom: 0;
+}
 
 #chatbox-canvas-container {
   width: 100vw;
@@ -34,22 +35,28 @@
   height: 89vh; }
 
 #chatbar {
-  padding-left: 1em; }
+    padding-left: 1em;
+}
 
 #m {
-  margin-top: 3px;
-  width: 70%;
-  float: left; }
+    margin-top: 3px;
+    width: 70%;
+    float: left;
+}
 
 #chatsend {
-  margin-top: 3px;
-  margin-bottom: 1em;
-  margin-left: 2em;
-  width: 20%; }
+    margin-top: 3px;
+    margin-bottom: 1em;
+    margin-left: 2em;
+    width: 20%;
+}
 
 #upMsg {
-  display: block; }
+    display: block;
+}
 
 @media screen and (max-width: 650px) {
-  #draw {
-    height: 700px; } }
+    #draw {
+        height: 700px;
+    }
+}
