@@ -50,6 +50,44 @@
 #upMsg {
   display: block; }
 
+@media screen and (min-width: 1000px) and (max-width: 1400px) {
+  #chatsend {
+    margin-left: 20px;
+    margin-right: 10px;
+  }
+}
+
+
+@media screen and (min-width: 769px) and (max-width: 999px) {
+  #chatsend {
+    padding: 4px;
+    font-size: 90%;
+    line-height: 1.2;
+    margin: 10px;
+    /*text-align: center;*/
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #chatsend {
+    padding: 2px 4px;
+    font-size: 80%;
+    line-height: 1;
+    text-align: center;  }
+}
+
 @media screen and (max-width: 650px) {
   #draw {
-    height: 700px; } }
+    height: 700px; }
+  #m {
+    float: none;
+  }
+  #chatsend {
+    padding: 4px 1px;
+    font-size: 80%;
+    line-height: 1;
+    text-align: center;
+  }
+}
+
+
