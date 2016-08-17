@@ -15,19 +15,20 @@ socket.sessionid = Math.floor(Math.random() * 64000).toString(16);
 var sessionId = socket.sessionid;
 // var sessionId = "23j4"
 
-    var clear = document.getElementById('clearbutton');
-    var canvas = document.getElementById("draw");
-    var context = canvas.getContext("2d");
+var clear = document.getElementById('clearbutton');
+var canvas = document.getElementById("draw");
+var context = canvas.getContext("2d");
+var dictionary = ['apple', 'banana', 'chocolate'];
 
-    //    console.log(socket);
+//    console.log(socket);
 
-    socket.on('clear-canvas', function (data) {
-        clearCanvas(data);
-    })
+socket.on('clear-canvas', function (data) {
+    clearCanvas(data);
+})
 
-    clear.addEventListener('click', function () {
-        socket.emit('clear-canvas');
-    });
+clear.addEventListener('click', function () {
+    socket.emit('clear-canvas');
+});
 
 // Returns an object specifying a semi-random color
 function randomColor() {
@@ -124,9 +125,9 @@ function endPath(point, sessionId) {
     view.draw()
 }
 
-    function clearCanvas() {
-project.clear()
-    }
+function clearCanvas() {
+    project.clear()
+}
 
 
 
@@ -187,4 +188,23 @@ socket.on('endPath', function (data, sessionId) {
         endPath(point, sessionId);
     }
     view.draw();
+})
+//add user to array
+
+$('#submitName').click(function () {
+    socket.emit('addUser', sessionId);
+    socket.emit('userTurn');
+})
+
+//remove user from array
+window.onbeforeunload = function (e) {
+    socket.emit('removeUser', sessionId)
+};
+
+socket.on('userTurn', function (userTurn) {
+    if (sessionId == userTurn.users) {
+    console.log("draw: " + userTurn.users);
+        $('#messages').append($('<li>'+userTurn.words+'</li>'));
+
+    }
 })
