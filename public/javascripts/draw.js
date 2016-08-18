@@ -205,6 +205,7 @@ var drawDisable = false;
 
 socket.on('userTurn', function (userTurn) {
     if (sessionId == userTurn.users) {
+        socket.emit('clear-canvas');
         drawDisable = true;
         console.log("draw: " + userTurn.users);
         $('#messages').append($('<li>' + userTurn.words + '</li>'));
