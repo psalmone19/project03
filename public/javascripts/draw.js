@@ -208,6 +208,7 @@ socket.on('userTurn', function (userTurn) {
         drawDisable = true;
         $('#messages').append($('<li>' + userTurn.words + '</li>'));
     }
+    socket.emit('word', userTurn.words);
 })
 
 socket.on('endDraw', function(){

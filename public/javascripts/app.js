@@ -4,11 +4,13 @@ document.addEventListener("DOMContentLoaded", function () {
     var nickName = '';
     var $nickName = $('#nickName');
     var start = $('#startButton');
+    var guess = $('#m');
 
     $('#nicknamePOP').modal('show');
     $('form').submit(function () {
         socket.emit('chat message', `${$('#m').val()};${nickName}`);
-        $('#m').val('');
+        socket.emit('guess', guess.val());
+        guess.val('');
         return false;
     });
 
@@ -46,5 +48,9 @@ document.addEventListener("DOMContentLoaded", function () {
     
     socket.on('turn', function(name){
          $('#messages').append(name + ' is drawing...<br/>');
+    })
+    
+    socket.on('winTurn', function(gameWord){
+         $('#messages').append(gameWord + ' is correct!!');
     })
 });

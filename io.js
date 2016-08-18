@@ -7,6 +7,8 @@ var _ = require('underscore');
 // });
 var users = [];
 var timer = 10;
+var gameWord = '';
+var gameGuess = '';
 var dictionary = [
 //easy words
 'cat', 'sun', 'cup',
@@ -165,26 +167,34 @@ io.on('connection', function (socket) {
     socket.on('enteredRoom', function (msg) {
         io.emit('enteredRoom', msg);
         console.log(users.length)
-        users.push({name: msg});
+        users.push({
+            name: msg
+        });
 
     });
 
     socket.on('addUser', function (sessionId) {
-        users[users.length-1].id= sessionId;
+        users[users.length - 1].id = sessionId;
         console.log(users);
     });
 
     socket.on('removeUser', function (sessionId) {
-      for(var i=0; i<users.length; i++){
-            if (users[i].id == sessionId){
-                 users.splice(i, 1);
+        for (var i = 0; i < users.length; i++) {
+            if (users[i].id == sessionId) {
+                users.splice(i, 1);
             }
         }
     })
 
-    socket.on('turn', function (nickName) {
+    socket.on('word', function (word) {
+        gameWord = word;
     })
-
+    
+    socket.on('guess', function (guess) {
+        gameGuess = guess;
+        rightGuess();
+    })
+    
     socket.on('startGame', function () {
         io.emit('userTurn', {
             users: users[0].id,
@@ -210,6 +220,12 @@ io.on('connection', function (socket) {
         }, 1000);
     }
 
+    function rightGuess() {
+        if(gameGuess == gameWord) {
+            console.log('win');
+            io.emit('winTurn', gameWord);
+        }
+    }
 }); // io represents socket.io on the server - let's export it
 
 
