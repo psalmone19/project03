@@ -6,6 +6,7 @@ var _ = require('underscore');
 //  console.log('Client connected to socket.io!');
 // });
 var users = [];
+var timer = 10;
 var dictionary = [
 //easy words
 'cat', 'sun', 'cup',
@@ -176,17 +177,40 @@ io.on('connection', function (socket) {
     })
 
     socket.on('userTurn', function () {
+
     })
+
+    socket.on('reset', function () {
+        timer = 10;
+        var end = users.splice(0, 1)[0];
+        users.push(end);
+    })
+
+    socket.on('startGame', function () {
+        io.emit('userTurn', {
+            users: users[0],
+            words: _.sample(dictionary)
+        })
+        startTimer();
+    })
+
+    function startTimer() {
+        timer = timer + 1;
+        var timerID = setInterval(function (e) {
+            timer--;
+            io.emit('startGame', timer);
+            if (timer <= 0) {
+                timer = 10;
+                var end = users.splice(0, 1)[0];
+                users.push(end);
+                clearInterval(timerID);
+                io.emit('endDraw')
+            }
+            console.log(timer);
+        }, 1000);
+    }
 
 }); // io represents socket.io on the server - let's export it
 
-setInterval(function () {
-    io.emit('userTurn', {
-        users: users[0],
-        words: _.sample(dictionary)
-    })
-    var end = users.splice(0, 1)[0];
-    users.push(end);
-}, 10000);
 
 module.exports = io;

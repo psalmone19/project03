@@ -193,7 +193,6 @@ socket.on('endPath', function (data, sessionId) {
 //add user to array
 $('#submitName').click(function () {
     socket.emit('addUser', sessionId);
-    socket.emit('userTurn');
 })
 
 //remove user from array
@@ -206,10 +205,14 @@ var drawDisable = false;
 
 socket.on('userTurn', function (userTurn) {
     if (sessionId == userTurn.users) {
-        socket.emit('clear-canvas');
         drawDisable = true;
         $('#messages').append($('<li>' + userTurn.words + '</li>'));
-    } else {
-        drawDisable = false;
     }
 })
+
+socket.on('endDraw', function(){
+     socket.emit('clear-canvas');
+    drawDisable= false;
+})
+
+
