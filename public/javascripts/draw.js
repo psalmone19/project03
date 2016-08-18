@@ -18,10 +18,8 @@ var sessionId = socket.sessionid;
 var clear = document.getElementById('clearbutton');
 var canvas = document.getElementById("draw");
 var context = canvas.getContext("2d");
-var dictionary = ['apple', 'banana', 'chocolate'];
 
 //    console.log(socket);
-
 socket.on('clear-canvas', function (data) {
     clearCanvas(data);
 })
@@ -54,12 +52,15 @@ function onMouseDown(event) {
     console.log(socket.sessionid);
     // Create the new path
     color = randomColor();
+if(drawDisable === true){
     startPath(event.point, color, sessionId);
     // Inform the backend
     emit("startPath", {
         point: event.point,
         color: color
     }, sessionId);
+}
+    
 }
 
 function onMouseDrag(event) {
@@ -68,7 +69,7 @@ function onMouseDrag(event) {
     step.angle += 90;
     var top = event.middlePoint + step;
     var bottom = event.middlePoint - step;
-
+if(drawDisable === true){
     continuePath(top, bottom, sessionId);
 
     // Inform the backend
@@ -76,18 +77,19 @@ function onMouseDrag(event) {
         top: top,
         bottom: bottom
     }, sessionId);
+}
 
 }
 
 function onMouseUp(event) {
-
+if(drawDisable === true){
     endPath(event.point, sessionId);
 
     // Inform the backend
     emit("endPath", {
         point: event.point
     }, sessionId);
-
+}
 }
 
 
@@ -149,15 +151,14 @@ function emit(eventName, data) {
 
 
 socket.on('startPath', function (data, sessionId) {
-    if (sessionId !== socket.sessionid) {
-        console.log("received start path")
-            // console.log(data.point)
+    console.log("received start path")
+ 
+        // console.log(data.point)
         var point = {
             x: data.point[1],
             y: data.point[2]
         }
         startPath(point, data.color, sessionId);
-    }
 })
 
 
@@ -177,20 +178,19 @@ socket.on('continuePath', function (data, sessionId) {
     view.draw();
 })
 
-
 socket.on('endPath', function (data, sessionId) {
-    if (sessionId !== socket.sessionid) {
-        console.log("received end path")
-        var point = {
-            x: data.point[1],
-            y: data.point[2]
+        if (sessionId !== socket.sessionid) {
+            console.log("received end path")
+            var point = {
+                x: data.point[1],
+                y: data.point[2]
+            }
+            endPath(point, sessionId);
         }
-        endPath(point, sessionId);
-    }
-    view.draw();
-})
-//add user to array
+        view.draw();
+    })
 
+//add user to array
 $('#submitName').click(function () {
     socket.emit('addUser', sessionId);
     socket.emit('userTurn');
@@ -201,10 +201,14 @@ window.onbeforeunload = function (e) {
     socket.emit('removeUser', sessionId)
 };
 
+var drawDisable = false;
+
 socket.on('userTurn', function (userTurn) {
     if (sessionId == userTurn.users) {
-    console.log("draw: " + userTurn.users);
-        $('#messages').append($('<li>'+userTurn.words+'</li>'));
-
+        drawDisable = true;
+        console.log("draw: " + userTurn.users);
+        $('#messages').append($('<li>' + userTurn.words + '</li>'));
+    } else {
+        drawDisable = false;
     }
 })

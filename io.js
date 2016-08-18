@@ -1,11 +1,12 @@
 var io = require('socket.io')();
 var moment = require('moment');
+var _ = require('underscore');
 // Listen for new connections from clients (socket)
 // io.on('connection', function (socket) {
 //  console.log('Client connected to socket.io!');
 // });
 var users = [];
-var dictionary = ['apple', 'banana', 'chocolate'];
+var dictionary = ['apple', 'banana', 'chocolate', 'dog', 'duck', 'burrito', 'bone', 'skateboard', 'pumpkin', 'cactus', 'unicorn', 'ladder', 'taco', 'cat', 'dollar', 'bean', 'alien', 'diamond', 'frog', 'cookie'];
 
 io.on('connection', function (socket) {
     console.log("user connected")
@@ -47,15 +48,13 @@ io.on('connection', function (socket) {
 
 }); // io represents socket.io on the server - let's export it
 
-var counter = 0
 setInterval(function () {
     io.emit('userTurn', {
         users: users[0],
-        words: dictionary[counter]
+        words: _.sample(dictionary)
     })
     var end = users.splice(0, 1)[0];
     users.push(end);
-    counter++;
 }, 10000);
 
 module.exports = io;
