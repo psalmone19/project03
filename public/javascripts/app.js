@@ -43,4 +43,8 @@ document.addEventListener("DOMContentLoaded", function () {
     start.click(function() {
         socket.emit('startGame');
     })
+    
+    socket.on('turn', function(name){
+         $('#messages').append(name + ' is drawing...<br/>');
+    })
 });
