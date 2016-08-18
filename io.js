@@ -175,7 +175,8 @@ io.on('connection', function (socket) {
         users.splice(index, 1);
     })
 
-    socket.on('userTurn', function () {})
+    socket.on('userTurn', function () {
+    })
 
 }); // io represents socket.io on the server - let's export it
 
