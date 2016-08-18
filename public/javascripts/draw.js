@@ -214,5 +214,3 @@ socket.on('endDraw', function(){
      socket.emit('clear-canvas');
     drawDisable= false;
 })
-
-

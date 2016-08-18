@@ -164,31 +164,30 @@ io.on('connection', function (socket) {
 
     socket.on('enteredRoom', function (msg) {
         io.emit('enteredRoom', msg);
+        console.log(users.length)
+        users.push({name: msg});
+
     });
 
     socket.on('addUser', function (sessionId) {
-        users.push(sessionId);
+        users[users.length-1].id= sessionId;
         console.log(users);
     });
 
     socket.on('removeUser', function (sessionId) {
-        var index = users.indexOf(sessionId);
-        users.splice(index, 1);
+      for(var i=0; i<users.length; i++){
+            if (users[i].id == sessionId){
+                 users.splice(i, 1);
+            }
+        }
     })
 
-    socket.on('userTurn', function () {
-
-    })
-
-    socket.on('reset', function () {
-        timer = 10;
-        var end = users.splice(0, 1)[0];
-        users.push(end);
+    socket.on('turn', function (nickName) {
     })
 
     socket.on('startGame', function () {
         io.emit('userTurn', {
-            users: users[0],
+            users: users[0].id,
             words: _.sample(dictionary)
         })
         startTimer();
@@ -196,6 +195,7 @@ io.on('connection', function (socket) {
 
     function startTimer() {
         timer = timer + 1;
+        io.emit('turn', users[0].name);
         var timerID = setInterval(function (e) {
             timer--;
             io.emit('startGame', timer);
