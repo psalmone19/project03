@@ -72,7 +72,7 @@
 #legend {
   display: flex;
   flex-direction: row;
-  box-shadow: -2px 3px 0px #666; }
+  box-shadow: -2px 3px 10px #666; }
 
 .legend-items {
   flex-grow: 1;
