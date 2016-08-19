@@ -6,8 +6,8 @@ var socket = io();
 // The faster the user moves their mouse
 // the larger the circle will be
 // We dont want it to be larger/smaller than this
-tool.maxDistance = 2;
-tool.maxDistance = 80;
+//tool.maxDistance = 2;
+//tool.maxDistance = 80;
 
 // Each user has a unique session ID
 // We'll use this to keep track of paths
@@ -196,10 +196,7 @@ $('#submitName').click(function () {
     $('#submitName').prop('disabled', true);
 })
 
-//remove user from arraynodemon
-window.onbeforeunload = function (e) {
-    socket.emit('removeUser', sessionId)
-};
+//remove user from array
 
 var drawDisable = false;
 
@@ -208,7 +205,7 @@ socket.on('userTurn', function (userTurn) {
     var $userInput = $('#m');
     if (sessionId == userTurn.users) {
         drawDisable = true;
-        $('#messages').append($('<li>Your word is: ' + userTurn.words + '</li>'));
+        $('#word-box').append($('<li>Your word is: ' + userTurn.words + '</li>'));
     }
     socket.emit('word', userTurn.words);
 })
@@ -221,3 +218,5 @@ socket.on('endDraw', function(){
      socket.emit('clear-canvas');
     drawDisable= false;
 })
+
+

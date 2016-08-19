@@ -167,11 +167,10 @@ io.on('connection', function (socket) {
 
     socket.on('enteredRoom', function (msg) {
         io.emit('enteredRoom', msg);
-        console.log(users.length)
         users.push({
-            name: msg
+            name: msg,
+            socketId: socket.id
         });
-
     });
 
     socket.on('addUser', function (sessionId) {
@@ -179,31 +178,32 @@ io.on('connection', function (socket) {
         console.log(users);
     });
 
-    socket.on('removeUser', function (sessionId) {
+    socket.on('disconnect', function () {
         for (var i = 0; i < users.length; i++) {
-            if (users[i].id == sessionId) {
+            if (users[i].socketId == socket.id) {
                 users.splice(i, 1);
             }
         }
-           console.log(users);
+        socket.leave(socket.id);
+
     })
 
     socket.on('word', function (word) {
         gameWord = word;
     })
-    
+
     socket.on('guess', function (guess) {
         gameGuess = guess;
         rightGuess();
     })
-    
+
     socket.on('startGame', function () {
-        if(button == true){
-        io.emit('userTurn', {
-            users: users[0].id,
-            words: _.sample(dictionary)
-        })
-        startTimer();
+        if (button == true) {
+            io.emit('userTurn', {
+                users: users[0].id,
+                words: _.sample(dictionary)
+            })
+            startTimer();
             button = false;
         }
     })
@@ -227,15 +227,15 @@ io.on('connection', function (socket) {
     }
 
     function rightGuess() {
-        if(gameGuess == gameWord) {
+        if (gameGuess == gameWord) {
             console.log('win');
             io.emit('winTurn', gameWord);
-               timer = 30;
-                var end = users.splice(0, 1)[0];
-                users.push(end);
-                clearInterval(timerID);
-                io.emit('endDraw')
-            
+            timer = 30;
+            var end = users.splice(0, 1)[0];
+            users.push(end);
+            clearInterval(timerID);
+            io.emit('endDraw')
+
             button = true;
         }
     }

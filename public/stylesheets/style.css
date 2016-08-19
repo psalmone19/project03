@@ -30,7 +30,7 @@
   margin: 10px 10px;
   border-radius: 5px;
   background-color: #eee;
-  overflow: hidden; }
+  overflow: scroll; }
 
 #chatcontent {
   flex: 8;
