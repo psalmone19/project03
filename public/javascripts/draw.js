@@ -60,7 +60,7 @@ if(drawDisable === true){
         color: color
     }, sessionId);
 }
-    
+
 }
 
 function onMouseDrag(event) {
@@ -152,7 +152,7 @@ function emit(eventName, data) {
 
 socket.on('startPath', function (data, sessionId) {
     console.log("received start path")
- 
+
         // console.log(data.point)
         var point = {
             x: data.point[1],
@@ -204,10 +204,15 @@ var drawDisable = false;
 
 
 socket.on('userTurn', function (userTurn) {
+    var $userInput = $('#m');
     if (sessionId == userTurn.users) {
         drawDisable = true;
         $('#messages').append($('<li>' + userTurn.words + '</li>'));
     }
+})
+
+socket.on('guessWord', function (guessTurn) {
+
 })
 
 socket.on('endDraw', function(){

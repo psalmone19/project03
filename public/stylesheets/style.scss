@@ -23,11 +23,13 @@
   justify-content: flex-end;
   /*margin-top: 1px;*/
   height: 100%;
-  box-shadow: 0px 0px 1px #666;
+  box-shadow: -1px 2px 1px #666;
   background-color: #eee; }
 
 #draw-container {
   flex: 7;
+  display: flex;
+  flex-direction: column;
   height: 100%; }
 
 #draw {
@@ -42,6 +44,14 @@
   width: 70%;
   float: left; }
 
+#clearbutton {
+  border-radius: 0 !important;
+}
+
+#startButton {
+  border-radius: 0 !important;
+}
+
 #chatsend {
   margin-top: 3px;
   margin-bottom: 1em;
@@ -50,6 +60,21 @@
 
 #upMsg {
   display: block; }
+
+#timer {
+  text-align: center; }
+
+#legend {
+  display: flex;
+  flex-direction: row;
+  box-shadow: 2px 1.5px 1px #666;}
+
+.legend-items {
+  flex-grow: 1;
+  flex-basis: 0; }
+
+.btn {
+  outline: none !important; }
 
 /*Media Queries for Responsive Design*/
 @media screen and (min-width: 993px) and (max-width: 1400px) {
