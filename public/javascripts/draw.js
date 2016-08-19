@@ -205,7 +205,7 @@ socket.on('userTurn', function (userTurn) {
     var $userInput = $('#m');
     if (sessionId == userTurn.users) {
         drawDisable = true;
-        $('#word-box').append($('<li>Your word is: ' + userTurn.words + '</li>'));
+        $('#messages').append($('<li id="draWord">Your word is: '  + userTurn.words + '</li>'));
     }
     socket.emit('word', userTurn.words);
 })
