@@ -210,7 +210,7 @@ io.on('connection', function (socket) {
     function startTimer() {
         timer = timer + 1;
         io.emit('turn', users[0].name);
-        var timerID = setInterval(function (e) {
+        timerID = setInterval(function (e) {
             timer--;
             io.emit('startGame', timer);
             if (timer <= 0) {
@@ -229,6 +229,12 @@ io.on('connection', function (socket) {
         if(gameGuess == gameWord) {
             console.log('win');
             io.emit('winTurn', gameWord);
+               timer = 30;
+                var end = users.splice(0, 1)[0];
+                users.push(end);
+                clearInterval(timerID);
+                io.emit('endDraw')
+            
             button = true;
         }
     }
