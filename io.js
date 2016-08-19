@@ -185,6 +185,7 @@ io.on('connection', function (socket) {
                 users.splice(i, 1);
             }
         }
+           console.log(users);
     })
 
     socket.on('word', function (word) {

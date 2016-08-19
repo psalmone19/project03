@@ -193,9 +193,10 @@ socket.on('endPath', function (data, sessionId) {
 //add user to array
 $('#submitName').click(function () {
     socket.emit('addUser', sessionId);
+    $('#submitName').prop('disabled', true);
 })
 
-//remove user from array
+//remove user from arraynodemon
 window.onbeforeunload = function (e) {
     socket.emit('removeUser', sessionId)
 };
