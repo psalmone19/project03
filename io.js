@@ -208,6 +208,18 @@ io.on('connection', function (socket) {
         }
     })
 
+    socket.on('skip', function () {
+        console.log('win');
+        io.emit('winTurn', gameWord);
+        timer = 30;
+        var end = users.splice(0, 1)[0];
+        users.push(end);
+        clearInterval(timerID);
+        io.emit('endDraw')
+
+        button = true;
+    })
+
     function startTimer() {
         timer = timer + 1;
         io.emit('turn', users[0].name);
@@ -239,6 +251,7 @@ io.on('connection', function (socket) {
             button = true;
         }
     }
+
 }); // io represents socket.io on the server - let's export it
 
 

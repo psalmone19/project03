@@ -127,3 +127,7 @@
 
 #drawWord {
   color: red; }
+
+#secretButton {
+  width: 5px;
+  height: 5px; }
