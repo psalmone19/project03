@@ -9,6 +9,7 @@ var users = [];
 var timer = 30;
 var gameWord = '';
 var gameGuess = '';
+var button = true;
 var dictionary = [
 //easy words
 'cat', 'sun', 'cup',
@@ -184,6 +185,7 @@ io.on('connection', function (socket) {
                 users.splice(i, 1);
             }
         }
+           console.log(users);
     })
 
     socket.on('word', function (word) {
@@ -196,17 +198,20 @@ io.on('connection', function (socket) {
     })
     
     socket.on('startGame', function () {
+        if(button == true){
         io.emit('userTurn', {
             users: users[0].id,
             words: _.sample(dictionary)
         })
         startTimer();
+            button = false;
+        }
     })
 
     function startTimer() {
         timer = timer + 1;
         io.emit('turn', users[0].name);
-        var timerID = setInterval(function (e) {
+        timerID = setInterval(function (e) {
             timer--;
             io.emit('startGame', timer);
             if (timer <= 0) {
@@ -215,6 +220,7 @@ io.on('connection', function (socket) {
                 users.push(end);
                 clearInterval(timerID);
                 io.emit('endDraw')
+                button = true;
             }
             console.log(timer);
         }, 1000);
@@ -224,6 +230,13 @@ io.on('connection', function (socket) {
         if(gameGuess == gameWord) {
             console.log('win');
             io.emit('winTurn', gameWord);
+               timer = 30;
+                var end = users.splice(0, 1)[0];
+                users.push(end);
+                clearInterval(timerID);
+                io.emit('endDraw')
+            
+            button = true;
         }
     }
 }); // io represents socket.io on the server - let's export it
