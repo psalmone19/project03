@@ -39,8 +39,7 @@
   height: 89vh; }
 
 #draWord {
-  margin-top: 5px;
-}
+  margin-top: 5px; }
 
 #m {
   margin-top: 3px;
@@ -142,5 +141,10 @@
     height: 100%; }
   #draw {
     height: 89vh; }
-  #word {
-    font-size: 40px; } }
+
+#drawWord {
+  color: red; }
+
+#secretButton {
+  width: 5px;
+  height: 5px; } }

@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var $nickName = $('#nickName');
     var start = $('#startButton');
     var guess = $('#m');
+    var $secretButton = $('#secretButton');
 
     $('#nicknamePOP').modal('show');
     $('form').submit(function () {
@@ -57,4 +58,11 @@ document.addEventListener("DOMContentLoaded", function () {
     socket.on('winTurn', function(gameWord){
          $('#messages').append('<br/>' +gameWord + ' is correct!!');
     })
+
+
+    $secretButton.click(function(){
+        socket.emit('skip')
+    })
+
 });
+
