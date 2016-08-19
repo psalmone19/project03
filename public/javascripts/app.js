@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     
     socket.on('turn', function(name){
-         $('#messages').append(name + ' is drawing...<br/>');
+         $('#messages').append('<br/>' +name + ' is drawing...');
     })
     
     socket.on('winTurn', function(gameWord){
