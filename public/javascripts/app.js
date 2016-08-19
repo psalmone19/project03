@@ -34,9 +34,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     })
     
-    window.onbeforeunload = function (e) {
-    socket.emit('removeUser', nickName)
-};
+//    window.onbeforeunload = function (e) {
+//    socket.emit('removeUser', nickName)
+//};
     
     socket.on('enteredRoom', function (msg) {
         $('#messages').append($('<i class="fa fa-commenting-o" aria-hidden="true" id="upMsg">').text(' ' + msg + ' has entered the room '))
