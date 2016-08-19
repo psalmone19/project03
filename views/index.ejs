@@ -61,7 +61,7 @@
                 <h4 class="modal-title">DRAWING.IO</h4>
             </div>
             <div class="modal-body">
-                <input type="name" class="form-control"  id="nickName" placeholder="Please enter Nickname!"/>
+                <input type="name" class="form-control" autofocus="autofocus" id="nickName" placeholder="Please enter Nickname!"/>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -73,11 +73,13 @@
 
 <div id="chatbox-canvas-container">
     <div id="draw-container">
-        <button id="clearbutton" class="btn btn-danger">C L E A R &nbsp; Y O U R &nbsp; B A O R D</button>
-        <button id="startButton" class="btn btn-success">start</button>
-           <h4 id="timer">s</h4>
-    
-        <canvas id="draw" resize="true" keepalive="true"></canvas>
+      <div id="legend">
+        <button id="clearbutton" class="legend-items btn btn-danger">C L E A R &nbsp; Y O U R &nbsp; B O A R D</button>
+        <h4 class="legend-items" id="timer">GET READY!</h4>
+        <button id="startButton" class="legend-items btn btn-success">S T A R T</button>
+      </div>
+      <canvas id="draw" resize="true" keepalive="true"></canvas>
+
     </div>
     <div id="chatbox-container">
       <div id="chatbar">
