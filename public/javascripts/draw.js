@@ -196,10 +196,7 @@ $('#submitName').click(function () {
     $('#submitName').prop('disabled', true);
 })
 
-//remove user from arraynodemon
-window.onbeforeunload = function (e) {
-    socket.emit('removeUser', sessionId)
-};
+//remove user from array
 
 var drawDisable = false;
 

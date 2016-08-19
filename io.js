@@ -6,6 +6,7 @@ var _ = require('underscore');
 //  console.log('Client connected to socket.io!');
 // });
 var users = [];
+var userSession = '';
 var timer = 30;
 var gameWord = '';
 var gameGuess = '';
@@ -171,7 +172,6 @@ io.on('connection', function (socket) {
         users.push({
             name: msg
         });
-
     });
 
     socket.on('addUser', function (sessionId) {
@@ -179,9 +179,9 @@ io.on('connection', function (socket) {
         console.log(users);
     });
 
-    socket.on('removeUser', function (sessionId) {
+    socket.on('removeUser', function (nickName) {
         for (var i = 0; i < users.length; i++) {
-            if (users[i].id == sessionId) {
+            if (users[i].name == nickName) {
                 users.splice(i, 1);
             }
         }
