@@ -41,9 +41,9 @@ document.addEventListener("DOMContentLoaded", function () {
     socket.on('startGame', function (timer) {
          $('#timer').html(timer);
     })
-
+    
     start.click(function() {
-        socket.emit('startGame');
+        socket.emit('startGame'); 
     })
     
     socket.on('turn', function(name){
