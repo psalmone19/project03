@@ -2,8 +2,6 @@
 ##Drawing.io 
 Real time drawing with friends/pictionary game with friends
 
-Heroku link: http://fathomless-oasis-85228.herokuapp.com/
-
 Express Node.js App
 
 ###Functionality: 
