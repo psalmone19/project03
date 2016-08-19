@@ -3,6 +3,8 @@
 
 <head>
     <title>DRAWING.IO</title>
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
     <!-- Google Icon Fonts used by Materialize -->
     <link rel="icon" type="image/png" href="http://simpleicon.com/wp-content/uploads/pencil.png">
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -35,8 +37,8 @@
 
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-              <li><a href="#">Link</a></li>
+             <!--  <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+              <li><a href="#">Link</a></li> -->
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <$ if (user) { $>
@@ -74,9 +76,9 @@
 <div id="chatbox-canvas-container">
     <div id="draw-container">
       <div id="legend">
-        <button id="clearbutton" class="legend-items btn btn-danger">C L E A R &nbsp; Y O U R &nbsp; B O A R D</button>
+        <button id="clearbutton" class="legend-items btn">C L E A R &nbsp; Y O U R &nbsp; B O A R D</button>
         <h4 class="legend-items" id="timer">GET READY!</h4>
-        <button id="startButton" class="legend-items btn btn-success">S T A R T</button>
+        <button id="startButton" class="legend-items btn">S T A R T</button>
       </div>
       <canvas id="draw" resize="true" keepalive="true"></canvas>
 
