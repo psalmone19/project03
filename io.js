@@ -6,7 +6,7 @@ var _ = require('underscore');
 //  console.log('Client connected to socket.io!');
 // });
 var users = [];
-var timer = 10;
+var timer = 30;
 var gameWord = '';
 var gameGuess = '';
 var dictionary = [
@@ -210,7 +210,7 @@ io.on('connection', function (socket) {
             timer--;
             io.emit('startGame', timer);
             if (timer <= 0) {
-                timer = 10;
+                timer = 30;
                 var end = users.splice(0, 1)[0];
                 users.push(end);
                 clearInterval(timerID);
