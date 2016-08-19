@@ -6,8 +6,8 @@ var socket = io();
 // The faster the user moves their mouse
 // the larger the circle will be
 // We dont want it to be larger/smaller than this
-tool.maxDistance = 2;
-tool.maxDistance = 80;
+//tool.maxDistance = 2;
+//tool.maxDistance = 80;
 
 // Each user has a unique session ID
 // We'll use this to keep track of paths
@@ -218,3 +218,5 @@ socket.on('endDraw', function(){
      socket.emit('clear-canvas');
     drawDisable= false;
 })
+
+
