@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var momentTimestamp = moment.utc(data[0].timestamp);
         if (nickName.length > 0) {
             data[0].timestamp = moment().valueOf()
-            $('#messages').append($('<i class="fa fa-commenting-o" aria-hidden="true" id="upMsg">').text(' ' + data[1] + ': ' + data[0] + ' ' + momentTimestamp.local().format('h:mm a')));
+            $('#chatcontent').append($('<i class="fa fa-commenting-o" aria-hidden="true" id="upMsg">').text(' ' + data[1] + ': ' + data[0] + ' ' + momentTimestamp.local().format('h:mm a')));
         } else {
             $('#nicknamePOP').modal('show');
         }
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
 //};
 
     socket.on('enteredRoom', function (msg) {
-        $('#messages').append($('<i class="fa fa-commenting-o" aria-hidden="true" id="upMsg">').text(' ' + msg + ' has entered the room '))
+        $('#chatcontent').append($('<i class="fa fa-commenting-o" aria-hidden="true" id="upMsg">').text(' ' + msg + ' has entered the room '))
     });
 
     socket.on('startGame', function (timer) {
@@ -52,11 +52,11 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 
     socket.on('turn', function(name){
-         $('#messages').append('<br/>' +name + ' is drawing...');
+         $('#chatcontent').append('<br/>' + name + ' is drawing...');
     })
 
     socket.on('winTurn', function(gameWord){
-         $('#messages').append('<br/>' +gameWord + ' is correct!!');
+         $('#chatcontent').append(gameWord + ' is correct!!');
     })
 
 
