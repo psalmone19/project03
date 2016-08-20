@@ -24,6 +24,10 @@ socket.on('clear-canvas', function (data) {
     clearCanvas(data);
 })
 
+socket.on('clear-wordbox', function() {
+    clearWordBox();
+})
+
 clear.addEventListener('click', function () {
     socket.emit('clear-canvas');
 });
@@ -131,6 +135,10 @@ function clearCanvas() {
     project.clear()
 }
 
+function clearWordBox() {
+    $('#wordbox').empty();
+}
+
 
 
 
@@ -205,7 +213,7 @@ socket.on('userTurn', function (userTurn) {
     var $userInput = $('#m');
     if (sessionId == userTurn.users) {
         drawDisable = true;
-        $('#messages').append($('<li id="drawWord">Your word is: ' + userTurn.words + '</li>'));
+        $('#wordbox').append($('<h5 id="drawWord">Your word is: ' + userTurn.words.toUpperCase() + '</h5>'));
     }
     socket.emit('word', userTurn.words);
 })
@@ -216,6 +224,7 @@ socket.on('guessWord', function (guessTurn) {
 
 socket.on('endDraw', function(){
      socket.emit('clear-canvas');
+     socket.emit('clear-wordbox');
     drawDisable= false;
 })
 

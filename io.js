@@ -165,6 +165,10 @@ io.on('connection', function (socket) {
         io.emit('clear-canvas');
     });
 
+    socket.on('clear-wordbox', function() {
+        io.emit('clear-wordbox');
+    });
+
     socket.on('enteredRoom', function (msg) {
         io.emit('enteredRoom', msg);
         users.push({
@@ -193,7 +197,7 @@ io.on('connection', function (socket) {
     })
 
     socket.on('guess', function (guess) {
-        gameGuess = guess;
+        gameGuess = guess.toLowerCase();
         rightGuess();
     })
 
