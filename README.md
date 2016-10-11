@@ -14,7 +14,7 @@ Express Node.js App
 - use express with node.js
 - use socket.io for real time interaction
 - set up routes that point to right view pages
-- OAtuh user log in
+- OAuth user log in
 - using paper.js for drawing canvas
 
 ##Usage 
